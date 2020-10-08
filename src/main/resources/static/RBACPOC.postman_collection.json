@@ -1,0 +1,180 @@
+{
+	"info": {
+		"_postman_id": "35d64958-074c-4230-b9d1-bad03801a4b7",
+		"name": "RBACPOC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:9091/login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "userName",
+						"value": "kishor.gardi@gmail.com",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "password",
+						"value": "$2a$10$5YhmdQZKNZ2R06.rVeOZQ.ALbd.QKa0YqmeHrs0fiGfJHtGUoDJZC",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"sanket.gardi@gmail.com\",\r\n    \"password\":\"sanket0\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9091/login",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"login"
+					]
+				},
+				"description": "Login API for role based access to books"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9091/books",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "sanket.gardi@gmail.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "sanket30",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "bookId",
+						"value": "3",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:9091/books",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"books"
+					]
+				},
+				"description": "Get all books for user role"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9091/books/remove/2",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "kishor.gardi@gmail.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "sanket30",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "bookId",
+						"value": "9",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "localhost:9091/books/remove/2",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"books",
+						"remove",
+						"2"
+					]
+				},
+				"description": "Delete book by book Id"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9091/books/create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n            \"bookId\": 12,\r\n            \"bookname\": \"origin\",\r\n            \"price\": 450.0,\r\n            \"author\": \"Dan Brown\"\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9091/books/create",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"books",
+						"create"
+					]
+				},
+				"description": "Create Books API"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

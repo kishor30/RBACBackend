@@ -1,0 +1,78 @@
+  {
+            "bookId": 12,
+            "bookname": "origin",
+            "price": 450.0,
+            "author": "Dan Brown"
+        }
+		
+	create book	
+		
+		curl --location --request POST 'localhost:9091/books/create' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: JSESSIONID=55F6C9B9B9259DE02A6FBCE18996A94A' \
+--data-raw '  {
+            "bookId": 12,
+            "bookname": "origin",
+            "price": 450.0,
+            "author": "Dan Brown"
+        }'
+		
+		
+		
+		
+		-----------------------------------------------
+		delete book
+		
+		curl --location --request DELETE 'localhost:9091/books/remove/3' \
+--header 'Authorization: Basic c2Fua2V0LmdhcmRpQGdtYWlsLmNvbTpzYW5rZXQzMA==' \
+--header 'Cookie: JSESSIONID=55F6C9B9B9259DE02A6FBCE18996A94A'
+
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------
+GET BOOK
+
+curl --location --request GET 'localhost:9091/books' \
+--header 'Authorization: Basic c2Fua2V0LmdhcmRpQGdtYWlsLmNvbTpzYW5rZXQzMA==' \
+--header 'Cookie: JSESSIONID=55F6C9B9B9259DE02A6FBCE18996A94A' \
+--data-raw ''
+
+------------------------------------------------------------------------------------------------------------
+Login
+
+curl --location --request POST 'localhost:9091/login' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: JSESSIONID=76D332333B556BF1EC07D3733BC0F8B9' \
+--data-raw '{
+    "username":"sanket.gardi@gmail.com",
+    "password":"sanket30"
+}'
+
+
+
+------------------------------------------------------------------------------------------------------------------
+
+DB querries 
+
+select * from book
+
+select * from user_details;
+
+INSERT INTO `book` (`book_id`,`author`, `bookname`, `price`) VALUES (11, "Dan Brown","the lost symbol",350);
+INSERT INTO `book` (`book_id`,`author`, `bookname`, `price`) VALUES (12, "Dan Brown","origin",350);
+INSERT INTO `book` (`book_id`,`author`, `bookname`, `price`) VALUES (13, "Dan Brown","deception point",350);
+
+
+INSERT INTO `role` (`id`,`name`) VALUES (2,'ROLE_USER');
+INSERT INTO `role` (`id`,`name`) VALUES (1,'ROLE_ADMIN');
+INSERT INTO `role` (`id`,`name`) VALUES (3,'ROLE_EDITOR');
+
+INSERT INTO `user_details` (`id`,`username`, `password`, `enabled`) VALUES (1,'kishor.gardi@gmail.com', '$2a$10$5YhmdQZKNZ2R06.rVeOZQ.ALbd.QKa0YqmeHrs0fiGfJHtGUoDJZC', true);
+INSERT INTO `user_details` (`id`,`username`, `password`, `enabled`) VALUES (2,'sanket.gardi@gmail.com', '$2a$10$5YhmdQZKNZ2R06.rVeOZQ.ALbd.QKa0YqmeHrs0fiGfJHtGUoDJZC', true);
+
+INSERT INTO `user_role` (`user_id`, `role_id`) VALUES (1, 1);
+INSERT INTO `user_role` (`user_id`, `role_id`) VALUES (1, 2);
+INSERT INTO `user_role` (`user_id`, `role_id`) VALUES (2, 2);
